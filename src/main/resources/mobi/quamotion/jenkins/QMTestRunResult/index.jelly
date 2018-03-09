@@ -1,0 +1,23 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" >
+    <l:layout title="${it.displayName}">
+        <l:main-panel>
+            <h1>Quamotion Test Result (#${it.displayName})</h1>
+            <dl>
+                <dt>passCount</dt>
+                <dd>${it.passCount}</dd>
+                <dt>failCount</dt>
+                <dd>${it.failCount}</dd>
+                <dt>totalCount</dt>
+                <dd>${it.totalCount}</dd>
+            </dl>
+            <j:forEach var="job" items="${it.TestJobResults}">
+                <h2>Test job (${job.name})</h2>
+                <pre>
+                    ${job.consoleLog}
+                </pre>
+            </j:forEach>
+        </l:main-panel>
+    </l:layout>
+</j:jelly>

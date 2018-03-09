@@ -1,0 +1,41 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <f:optionalBlock name="publishNewApp"  title="Upload a new application version:" checked="${instance.publishNewApp != null}">
+        <f:entry title="Application path" field="path">
+            <f:textbox value="${instance.publishNewApp.path}"/>
+        </f:entry>
+    </f:optionalBlock>
+    <f:optionalBlock name="useApp" checked="${instance.useApp != null}" title="Use app from repository:">
+        <f:entry title="operating system" field="appOperatingSystem">
+            <f:select default="${instance.useApp.appOperatingSystem}"/>
+        </f:entry>
+        <f:entry title="Application identifier" field="appId">
+            <f:select default="${instance.useApp.appId}"/>
+        </f:entry>
+        <f:entry title="Application version" field="appVersion">
+            <f:select default="${instance.useApp.appVersion}"/>
+        </f:entry>
+    </f:optionalBlock>
+
+
+    <f:optionalBlock name="publishNewTestPackage" checked="${instance.publishNewTestPackage != null}" title="Upload a new test package version">
+        <f:entry title="Test package path" field="path">
+            <f:textbox  value="${instance.publishNewTestPackage.path}"/>
+        </f:entry>
+    </f:optionalBlock>
+
+    <f:optionalBlock name="useTestPackage" checked="${instance.useTestPackage != null}" title="Use test package from repository:">
+        <f:entry title="Test package name" field="testPackageName">
+            <f:select default="${instance.useTestPackage.testPackageName}"/>
+        </f:entry>
+        <f:entry title="Test package version"  field="testPackageVersion">
+            <f:select default="${instance.useTestPackage.testPackageVersion}"/>
+        </f:entry>
+    </f:optionalBlock>
+
+    <f:entry title="Device group identifier" field="deviceGroupId">
+        <f:select/>
+    </f:entry>
+</j:jelly>
